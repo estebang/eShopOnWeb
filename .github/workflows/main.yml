@@ -19,4 +19,12 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./src/Web/Web.csproj --configuration Release
     - name: Publish with dotnet
-      run: dotnet publish ./src/Web/Web.csproj -c Release -o  eShopOnWeb
+      run: dotnet publish ./src/Web/Web.csproj -c Release -o  ./eShopOnWeb
+
+       # Deploy to Azure Web apps
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: 'devsum-github'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
+        package: './eShopOnWeb'
