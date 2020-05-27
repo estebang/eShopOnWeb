@@ -19,4 +19,4 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./src/Web/Web.csproj --configuration Release
     - name: Publish with dotnet
-      run: dotnet publish -c Release -o './src/Web/Web.csproj' 
+      run: dotnet publish ./src/Web/Web.csproj -c Release -o  eShopOnWeb
